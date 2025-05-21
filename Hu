@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>تست شخصیت تصویری</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f0f0f0;
+      text-align: center;
+      padding: 30px;
+    }
+    .container {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      padding: 25px;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      color: #333;
+    }
+    .question {
+      margin: 20px 0;
+      text-align: right;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #673ab7;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    .result {
+      margin-top: 30px;
+      font-size: 20px;
+      color: #555;
+    }
+    .result img {
+      max-width: 100%;
+      border-radius: 15px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>تست تصویری شخصیت‌شناسی (خیلی پیشرفته!)</h1>
+    <form id="quizForm">
+      <div class="question">
+        <label>1. اگر یه الاغ باهات صحبت کنه چی کار می‌کنی؟</label><br>
+        <input type="radio" name="q1" required> باهاش قرارداد تجاری می‌بندم<br>
+        <input type="radio" name="q1"> فرار می‌کنم و جیغ می‌زنم<br>
+        <input type="radio" name="q1"> دنبالش راه می‌افتم
+      </div>
+      <div class="question">
+        <label>2. صندلی مورد علاقه‌ات چیه؟</label><br>
+        <input type="radio" name="q2" required> صندلی ماساژور روی سقف<br>
+        <input type="radio" name="q2"> تاب توی راهرو دانشگاه<br>
+        <input type="radio" name="q2"> صندلی چوبی با خاطرات خمیازه‌دار
+      </div>
+      <button type="submit">بزن بریم!</button>
+    </form>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <audio id="sound" src="https://www.fesliyanstudios.com/play-mp3/387" preload="auto"></audio>
+
+  <script>
+    const results = [
+      {
+        text: "تو یک گوزن فضایی با روح لطیف هستی!",
+        img: "https://i.imgur.com/IYZ6x1B.jpeg"
+      },
+      {
+        text: "تو در آینده با یک چتر سخنگو ازدواج می‌کنی.",
+        img: "https://i.imgur.com/GEsT6cb.jpeg"
+      },
+      {
+        text: "تو یک ساندویچ هوشمندی که فقط در بارون حرف می‌زنه.",
+        img: "https://i.imgur.com/XIX3duC.jpeg"
+      },
+      {
+        text: "تو رهبر مخفی گروه همسترهای نینجا هستی!",
+        img: "https://i.imgur.com/eo3Jqne.jpeg"
+      }
+    ];
+
+    document.getElementById('quizForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const random = results[Math.floor(Math.random() * results.length)];
+      document.getElementById('result').innerHTML = `
+        <div>${random.text}</div>
+        <img src="${random.img}" alt="نتیجه شخصیت">
+      `;
+      document.getElementById('sound').play();
+    });
+  </script>
+</body>
+</html>
